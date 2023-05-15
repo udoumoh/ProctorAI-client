@@ -1,24 +1,16 @@
 'use client'
 import Link from 'next/link'
 import MobileMenu from './mobile-menu'
-import { Inter } from 'next/font/google';
-// import styles from '../styles/component.module.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  weight:"700"
-
-});
+import '../../app/css/style.css'
 
 export default function Header() {
   return (
     <header className={`absolute w-full z-30`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6" style={{fontFamily:"Noto Sans"}}>
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
-          <div className={`mr-4`}>
-            <p>PROCTOR-AI</p>
+          <div className={`mr-4 bg-purple-800 px-2 br-3 rounded`}>
+            <p className="" style={{ fontFamily: "Arvo", fontWeight: '700', fontSize: '20px', color:'#fff'}}>PROCTOR-AI</p>
           </div>
 
           {/* Desktop navigation */}
