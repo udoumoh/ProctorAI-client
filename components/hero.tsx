@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Modal from '@/components/utils/modal'
-import HeroImage from '@/public/images/hero-image-01.jpg'
+import HeroImage from '@/public/images/hero-image.jpg'
+import '../app/css/style.css'
 
 export default function Hero() {
 
@@ -31,14 +32,11 @@ export default function Hero() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">Hello</h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+            <h1 className="h1 mb-4" data-aos="fade-up" style={{ fontFamily: "Noto Sans, sans-serif", fontWeight: "600", color:"#161b3d" }}><span className='text-purple-700'>PROCTOR-AI:</span> SYSTEM FOR CHEATING DETECTION USING MACHINE LEARNING</h1>
+            <p className="text-xl text-start text-slate-700 mb-8 bg-purple-200 p-3 rounded" data-aos="fade-up" data-aos-delay="200">Welcome to Proctor-AI, your ultimate solution for cheating detection using machine learning. Our innovative system is designed to address the growing concern of academic dishonesty during examinations. By harnessing the power of machine learning algorithms, Proctor-AI employs cutting-edge techniques to identify and flag instances of cheating with exceptional accuracy. With our advanced technology, educational institutions can ensure the integrity of their assessments, maintain a level playing field for all students, and uphold the value of academic achievements. Say goodbye to the worries of cheating and embrace a secure and fair examination environment with Proctor-AI.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-              <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Start free trial</a>
-              </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Learn more</a>
+              <div className='bg-blue-300 rounded-md lg:px-8' data-aos="fade-up" data-aos-delay="400">
+                {/* <p className='text-slate-700'>How it works</p> */}
               </div>
             </div>
           </div>
@@ -70,7 +68,7 @@ export default function Hero() {
             <Modal id="modal" ariaLabel="modal-headline" show={videoModalOpen} handleClose={() => setVideoModalOpen(false)}>
               <div className="relative pb-9/16">
                 <video className="absolute w-full h-full" width="1920" height="1080" loop controls>
-                  <source src="/videos/video.mp4" type="video/mp4" />
+                  <source src="/videos/test3.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video> 
               </div>
