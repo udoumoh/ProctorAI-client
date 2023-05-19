@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback} from 'react'
 import Image from 'next/image'
 import Modal from '@/components/utils/modal'
 import HeroImage from '@/public/images/hero-image.jpg'
@@ -43,6 +43,7 @@ export default function Hero() {
 
           {/* Hero image */}
           <div>
+            <div className="py-6 md:py-10 border-t border-purple-800"></div>
             <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
               <Image
                 src={HeroImage}
