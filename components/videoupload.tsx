@@ -4,13 +4,13 @@
 // import Image from 'next/image'
 // import Modal from '@/components/utils/modal'
 // import HeroImage from '@/public/images/hero-image.jpg'
+import { useContext } from 'react'
 import '../app/css/style.css'
 import Fileupload from './utils/fileupload'
 
 export default function VideoUpload() {
 
-    
-
+    // const data = useContext(ThemeContext)
     return (
         <section>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 relative py-20">
