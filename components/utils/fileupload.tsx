@@ -1,9 +1,10 @@
-import React, {useCallback, useEffect, useState, createContext, useContext} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import { useDropzone } from 'react-dropzone';
 import { FiUpload } from '@react-icons/all-files/fi/FiUpload'
 
 interface FileuploadProps {
     text: string;
+    aProp: (url: string) => void;
 }
 
 interface   VideoUrl {
@@ -11,13 +12,9 @@ interface   VideoUrl {
     imageLink: string;
 }
 
-const Fileupload: React.FC<FileuploadProps> = ({ text }) => {
-    const [videoUrl, setVideoUrl] = useState<VideoUrl>({ videoLink: "", imageLink: "" });
-    const ThemeContext = createContext({})
-
-    useEffect(() =>{
-        console.log(videoUrl.videoLink, videoUrl.imageLink);
-    }, [videoUrl])
+const Fileupload: React.FC<FileuploadProps> = ({ text, aProp }) => {
+    const [videoUrl, setVideoUrl] = useState<VideoUrl>({ videoLink: "", imageLink: "" })
+    if (videoUrl.videoLink !== "") { aProp(videoUrl.videoLink)}
 
     function MyDropzone() {
         const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -39,7 +36,6 @@ const Fileupload: React.FC<FileuploadProps> = ({ text }) => {
                 };
             });
         }, []);
-
         const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
         return (
@@ -55,7 +51,6 @@ const Fileupload: React.FC<FileuploadProps> = ({ text }) => {
 
     return (
         <>
-            <ThemeContext.Provider value={videoUrl}>
             <MyDropzone />
             {videoUrl.videoLink ? (
                 <div>
@@ -66,7 +61,6 @@ const Fileupload: React.FC<FileuploadProps> = ({ text }) => {
                     <img src={videoUrl?.imageLink} width="800"/>
                 </div>
             )}
-            </ThemeContext.Provider>
         </>
     );
 };

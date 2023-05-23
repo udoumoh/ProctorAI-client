@@ -10,7 +10,9 @@ import Fileupload from './utils/fileupload'
 
 export default function VideoUpload() {
 
-    // const data = useContext(ThemeContext)
+    const someFunction = (url: string) => {
+        console.log(url);
+    }
     return (
         <section>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 relative py-20">
@@ -21,7 +23,7 @@ export default function VideoUpload() {
                 <div className='text-center'>
                         <h1 className='h2 text-gray-700' style={{ fontFamily: "Noto Sans, sans-serif", fontWeight: "500" }} data-aos="fade-up" data-aos-delay="300">Upload Video or Image below</h1>
                         <div data-aos="fade-up" data-aos-delay="400">
-                            <Fileupload text= "Drag 'n' drop some files here, or click to select files"/>
+                            <Fileupload text= "Drag 'n' drop some files here, or click to select files" aProp = {someFunction} />
                     </div>
                 </div>                                                                                                                                                                                                                                                                                                                                        
                 </div>
