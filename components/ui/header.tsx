@@ -10,7 +10,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
           <div className={`mr-4 bg-purple-800 px-2 br-3 rounded`}>
-            <p className="" style={{ fontFamily: "Arvo", fontWeight: '700', fontSize: '20px', color:'#fff'}}>PROCTOR-AI</p>
+            <p className="" style={{ fontFamily: "Arvo", fontWeight: '700', fontSize: '20px', color:'#fff'}}><a href='/'>PROCTOR-AI</a></p>
           </div>
 
           {/* Desktop navigation */}
@@ -18,7 +18,7 @@ export default function Header() {
              <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="/signin"
+                  href="/about"
                   className="font-medium hover:text-purple-800 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   About
