@@ -33,8 +33,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                     setVideoUrl({ ...videoUrl, imageLink: fileDataUrl });
                 } else if (file?.type.startsWith('video/')) {
                     setVideoUrl({ ...videoUrl, videoLink: fileDataUrl });
-                }
-
+                }                
             };
         });
     }, []);
@@ -44,15 +43,16 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         event.preventDefault();
         try{
             const sentData = await axios.post('http://127.0.0.1:5000/upload', videoUrl)
-            // console.log(sendData);
+            console.log(sendData);
         }catch(err){
             console.log(err);
         }
+        console.log(videoUrl);
     }
 
     useEffect(() => {
         sendData(event);
-    })
+    }, [videoUrl])
 
     return (
         <section>
