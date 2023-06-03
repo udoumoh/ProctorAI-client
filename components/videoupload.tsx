@@ -43,7 +43,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         event.preventDefault();
         try{
             const sentData = await axios.post('http://127.0.0.1:5000/upload', videoUrl)
-            console.log(sendData);
+            console.log(sentData);
         }catch(err){
             console.log(err);
         }
