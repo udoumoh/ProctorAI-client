@@ -8,7 +8,6 @@ import '../app/css/style.css'
 
 interface VideoloadProps {
     text: string;
-    aProp: (url: string) => void;
 }
 
 interface VideoUrl {
@@ -18,6 +17,7 @@ interface VideoUrl {
 
 const VideoUpload: React.FC<VideoloadProps> = () => {
     const [videoUrl, setVideoUrl] = useState<VideoUrl>({ videoLink: "", imageLink: "" })
+    const [cheatingFrames, setCheatingFrames] = useState([])
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         acceptedFiles.forEach((file: File) => {
@@ -43,16 +43,19 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         event.preventDefault();
         try{
             const sentData = await axios.post('http://127.0.0.1:5000/upload', videoUrl)
-            console.log(sentData);
+            setCheatingFrames(sentData?.data)
         }catch(err){
             console.log(err);
         }
-        console.log(videoUrl);
     }
 
     useEffect(() => {
-        sendData(event);
+        sendData(event);        
     }, [videoUrl])
+
+    useEffect(() => {
+        console.log(cheatingFrames);
+    }, [cheatingFrames])
 
     return (
         <section>
@@ -82,7 +85,10 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                              )}    
                         </div>
                         <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' onClick={sendData}>Submit</button>
-                </div>                                                                                                                                                                                                                                                                                                                                      
+                </div>  
+                <div>
+                        <img src='http://127.0.0.1:5000/cheating_frame_30.jpg' />  
+                </div>                                                                                                                                                                                                                                                                                                                                    
                 </div>
             </div>
         </section>
