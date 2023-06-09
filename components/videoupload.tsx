@@ -81,7 +81,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                         <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' onClick={sendData}>Submit</button>
                 </div>  
                 <div>
-                        <img src='http://127.0.0.1:5000/cheating_frame_30.jpg' />  
+                        <img src={cheatingFrames[0]}/>  
                 </div>                                                                                                                                                                                                                                                                                                                                    
                 </div>
             </div>
