@@ -5,6 +5,7 @@ import axios from 'axios'
 import { FiUpload } from '@react-icons/all-files/fi/FiUpload'
 import { useDropzone } from 'react-dropzone';
 import '../app/css/style.css'
+import ImageGallery from "react-image-grid-gallery"
 
 interface VideoloadProps {
     text: string;
@@ -17,7 +18,8 @@ interface VideoUrl {
 
 const VideoUpload: React.FC<VideoloadProps> = () => {
     const [videoUrl, setVideoUrl] = useState<VideoUrl>({ videoLink: "", imageLink: "" })
-    const [cheatingFrames, setCheatingFrames] = useState([])
+    const [cheatingFrames, setCheatingFrames] = useState<string[]>([])
+    const [galleryImages, setGalleryImages] = useState<{ alt: string; caption: string; src: string }[]>([])
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         acceptedFiles.forEach((file: File) => {
@@ -43,13 +45,32 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         event.preventDefault();
         try{
             const sentData = await axios.post('http://127.0.0.1:5000/upload', videoUrl)
-            setCheatingFrames(sentData?.data)
+            const responseData = sentData?.data
+            const newData: string[] = []
+            for(let each of responseData){
+                let temp = "data:image/jpg;base64," + each
+                newData.push(temp)
+            }
+            setCheatingFrames(newData)
             console.log(cheatingFrames);
             
         }catch(err){
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        const tempGalleryImages: {alt: string, caption: string, src: string}[] = []
+        for(let i = 0; i <cheatingFrames.length; i++){
+            let temp = {
+                alt: `pose ${i+1}`,
+                caption: `pose ${i+1}`,
+                src: cheatingFrames[i]
+            }
+            tempGalleryImages.push(temp)
+        }
+        setGalleryImages(tempGalleryImages)
+    }, [cheatingFrames])
 
     return (
         <section>
@@ -81,7 +102,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                         <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' onClick={sendData}>Submit</button>
                 </div>  
                 <div>
-                        <img src={cheatingFrames[0]}/>  
+                    <ImageGallery imgArray={galleryImages} columnWidth={230} gapSize={24} />  
                 </div>                                                                                                                                                                                                                                                                                                                                    
                 </div>
             </div>
