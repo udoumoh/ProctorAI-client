@@ -44,18 +44,12 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         try{
             const sentData = await axios.post('http://127.0.0.1:5000/upload', videoUrl)
             setCheatingFrames(sentData?.data)
+            console.log(cheatingFrames);
+            
         }catch(err){
             console.log(err);
         }
     }
-
-    useEffect(() => {
-        sendData(event);        
-    }, [videoUrl])
-
-    useEffect(() => {
-        console.log(cheatingFrames);
-    }, [cheatingFrames])
 
     return (
         <section>
