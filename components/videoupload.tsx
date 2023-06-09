@@ -20,6 +20,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
     const [videoUrl, setVideoUrl] = useState<VideoUrl>({ videoLink: "", imageLink: "" })
     const [cheatingFrames, setCheatingFrames] = useState<string[]>([])
     const [galleryImages, setGalleryImages] = useState<{ alt: string; caption: string; src: string }[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>()
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         acceptedFiles.forEach((file: File) => {
@@ -59,6 +60,11 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
         }
     }
 
+    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setIsLoading(true);
+        sendData(event)
+    }
+
     useEffect(() => {
         const tempGalleryImages: {alt: string, caption: string, src: string}[] = []
         for(let i = 0; i <cheatingFrames.length; i++){
@@ -70,6 +76,10 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
             tempGalleryImages.push(temp)
         }
         setGalleryImages(tempGalleryImages)
+
+        if (cheatingFrames.length > 1) {
+            setIsLoading(false);
+        }
     }, [cheatingFrames])
 
     return (
@@ -99,12 +109,76 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                             <img src={videoUrl?.imageLink} width="800" />
                              )}    
                         </div>
-                        <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' onClick={sendData}>Submit</button>
+                        {
+                            isLoading ? (
+                                <button type="button" className="btn text-white bg-purple-600 hover:bg-purple-700 w-full" disabled>
+                                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                    </svg>
+                                    Processing...
+                                </button>
+
+                            ) : (
+                                    <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' onClick={ handleSubmit }>Submit</button>
+                            )
+                        }
                 </div>  
-                <div>
-                    <ImageGallery imgArray={galleryImages} columnWidth={230} gapSize={24} />  
-                </div>                                                                                                                                                                                                                                                                                                                                    
                 </div>
+            </div>
+            <div className='max-w-4xl mx-auto'>
+                <h1 className='text-center h2 text-slate-800' style={{ fontFamily: "Noto Sans, sans-serif", fontWeight: "800" }}>IMAGE GALLERY</h1>
+            </div>
+            <div className='max-w-7xl text-center mx-auto'>  
+            {
+                isLoading ? (
+                        <div className="border border-violet-50 shadow rounded-md p-4 max-w-7xl h-96 max-h-screen mx-auto">
+                            <div className="animate-pulse flex space-x-4 space-y-5">
+                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-5"></div>
+                                <div className="flex-1 space-y-6 py-1">
+                                    <div className="h-2 bg-slate-200 rounded"></div>
+                                    <div className="space-y-3">
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div className="h-2 bg-slate-200 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="animate-pulse flex space-x-4 space-y-14">
+                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-14"></div>
+                                <div className="flex-1 space-y-6 py-1">
+                                    <div className="h-2 bg-slate-200 rounded"></div>
+                                    <div className="space-y-3">
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div className="h-2 bg-slate-200 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="animate-pulse flex space-x-4 space-y-14">
+                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-14"></div>
+                                <div className="flex-1 space-y-6 py-1">
+                                    <div className="h-2 bg-slate-200 rounded"></div>
+                                    <div className="space-y-3">
+                                        <div className="grid grid-cols-3 gap-4">
+                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div className="h-2 bg-slate-200 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                                                                                                                                                                                                                                                                                                                  
+                ) : (
+                <div className='text-center mx-auto bg-violet-50 pt-4 px-4 rounded-lg mb-5'>
+                    <ImageGallery imgArray={galleryImages} columnWidth={400} gapSize={14} />
+                </div>  
+                )        
+            }
             </div>
         </section>
     )

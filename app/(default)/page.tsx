@@ -4,19 +4,20 @@ export const metadata = {
 }
 
 import Hero from '@/components/hero'
-import Newsletter from '@/components/newsletter'
-import Testimonials from '@/components/testimonials'
+// import Newsletter from '@/components/newsletter'
+// import Testimonials from '@/components/testimonials'
 import VideoUpload from '@/components/videoupload'
+// import Features from '@/components/features'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <VideoUpload />
+      <VideoUpload text = ""/>
       {/* <Features /> */}
       {/* <Zigzag /> */}
-      <Testimonials />
-      <Newsletter />
+      {/* <Testimonials /> */}
+      {/* <Newsletter /> */}
     </>
   )
 }
