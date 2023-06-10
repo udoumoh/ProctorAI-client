@@ -125,9 +125,9 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                 </div>
             </div>
             <div className='max-w-4xl mx-auto'>
-                <h1 className='text-center h2 text-slate-800' style={{ fontFamily: "Noto Sans, sans-serif", fontWeight: "800" }}>IMAGE GALLERY</h1>
+                <h1 className='text-center h3 text-slate-800 mb-3' style={{ fontFamily: "Noto Sans, sans-serif", fontWeight: "600" }}>DETECTED POSES</h1>
             </div>
-            <div className='max-w-7xl text-center mx-auto'>  
+            <div className='max-w-7xl text-center mx-auto'>
             {
                 isLoading ? (
                         <div className="border border-violet-50 shadow rounded-md p-4 max-w-7xl h-96 max-h-screen mx-auto">
@@ -175,7 +175,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                         </div>                                                                                                                                                                                                                                                                                                                                  
                 ) : (
                 <div className='text-center mx-auto bg-violet-50 pt-4 px-4 rounded-lg mb-5'>
-                    <ImageGallery imgArray={galleryImages} columnWidth={400} gapSize={14} />
+                    <ImageGallery imgArray={galleryImages} columnWidth={400} gapSize={14}/>
                 </div>  
                 )        
             }
