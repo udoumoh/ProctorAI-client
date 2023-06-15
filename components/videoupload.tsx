@@ -130,50 +130,34 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
             <div className='max-w-7xl text-center mx-auto'>
             {
                 isLoading ? (
-                        <div className="border border-violet-50 shadow rounded-md p-4 max-w-7xl h-96 max-h-screen mx-auto">
+                        <div className="border border-violet-50 shadow rounded-md p-4 max-w-7xl h-auto max-h-screen mx-auto">
                             <div className="animate-pulse flex space-x-4 space-y-5">
-                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-5"></div>
                                 <div className="flex-1 space-y-6 py-1">
-                                    <div className="h-2 bg-slate-200 rounded"></div>
                                     <div className="space-y-3">
-                                        <div className="grid grid-cols-3 gap-4">
-                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
-                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+                                        <div className="grid grid-cols-6 gap-2">
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
                                         </div>
-                                        <div className="h-2 bg-slate-200 rounded"></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="animate-pulse flex space-x-4 space-y-14">
-                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-14"></div>
+                            <div className="animate-pulse flex space-x-4 space-y-5">
                                 <div className="flex-1 space-y-6 py-1">
-                                    <div className="h-2 bg-slate-200 rounded"></div>
                                     <div className="space-y-3">
-                                        <div className="grid grid-cols-3 gap-4">
-                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
-                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+                                        <div className="grid grid-cols-6 gap-2">
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
+                                            <div className="h-48 w-96 bg-slate-200 rounded col-span-2"></div>
                                         </div>
-                                        <div className="h-2 bg-slate-200 rounded"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="animate-pulse flex space-x-4 space-y-14">
-                                <div className="rounded-full bg-slate-200 h-10 w-10 mt-14"></div>
-                                <div className="flex-1 space-y-6 py-1">
-                                    <div className="h-2 bg-slate-200 rounded"></div>
-                                    <div className="space-y-3">
-                                        <div className="grid grid-cols-3 gap-4">
-                                            <div className="h-2 bg-slate-200 rounded col-span-2"></div>
-                                            <div className="h-2 bg-slate-200 rounded col-span-1"></div>
-                                        </div>
-                                        <div className="h-2 bg-slate-200 rounded"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>                                                                                                                                                                                                                                                                                                                                  
-                ) : (
+                ) 
+                : 
+                (
                 <div className='text-center mx-auto bg-violet-50 pt-4 px-4 rounded-lg mb-5'>
                     <ImageGallery imgArray={galleryImages} columnWidth={400} gapSize={14}/>
                 </div>  

@@ -18,7 +18,7 @@ export default function Header() {
              <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="/about"
+                  href="/pages/about"
                   className="font-medium hover:text-purple-800 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   About
