@@ -112,7 +112,7 @@ const VideoUpload: React.FC<VideoloadProps> = () => {
                         {
                             isLoading ? (
                                 <button type="button" className="btn text-white bg-purple-600 hover:bg-purple-700 w-full" disabled>
-                                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                    <svg className="animate-spin h-4 w-4 mr-3" viewBox="0 0 24 24">
                                     </svg>
                                     Processing...
                                 </button>
